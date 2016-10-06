@@ -72,11 +72,12 @@ public class Student {
 	
 	public double computeTuition() {
 		int credits = this.credits;
-		double tuition = 20000;
-		while (credits > 15) {
+		double tuition = 0;
+		while (credits >= 15) {
 			tuition += 20000;
 			credits -= 15;
 		}
+		tuition += 1333.33 * credits;
 		return tuition;
 	}
 	

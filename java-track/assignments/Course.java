@@ -46,7 +46,16 @@ public class Course {
 	}
 	
 	public boolean addStudent(Student new_stu) {
-		
+		if (this.getRemainingSeats() != 0) {
+			for (int i = 0; i < this.roster.length - this.remaining_seats; i++) {
+				if (new_stu.getName() == this.roster[i].getName()) {
+					return false;
+				}
+			}
+			this.roster[this.roster.length - this.remaining_seats] = new_stu;
+			this.remaining_seats -= 1;
+			return true;
+		}
 		return false;
 	}
 	

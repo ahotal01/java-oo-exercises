@@ -46,7 +46,7 @@ public class Course {
 	}
 	
 	public boolean addStudent(Student new_stu) {
-		// TODO fill in Student adder
+		
 		return false;
 	}
 	

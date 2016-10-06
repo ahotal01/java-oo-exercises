@@ -81,7 +81,13 @@ public class Student {
 	}
 	
 	public Student createLegacy(Student parent_one, Student parent_two) {
-		
+		Student legacy = new Student(parent_one.getName(), parent_two.getName(), 
+				parent_one.getStudentID() + parent_two.getStudentID());
+		legacy.set_GPA((parent_one.getGPA() + parent_two.getGPA()) / 2);
+		if (parent_one.getCredits() > parent_two.getCredits()) {
+			legacy.set_credits(parent_one.getCredits());
+		} else legacy.set_credits(parent_two.getCredits());
+		return legacy;
 	}
 	
 	public String toString() {

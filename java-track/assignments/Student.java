@@ -64,9 +64,9 @@ public class Student {
 	
 	public void submitGrade(double grade, int credits) {
 		double quality = credits * grade;
-		this.GPA = ((this.GPA * this.credits) + quality) / (this.credits + credits);
+		double new_GPA = ((this.GPA * this.credits) + quality) / (this.credits + credits);
 		
-		this.GPA = Math.round(this.GPA * 1000d) / 1000d;
+		this.GPA = Math.round(new_GPA * 1000d) / 1000d;
 		this.credits += credits;
 	}
 	

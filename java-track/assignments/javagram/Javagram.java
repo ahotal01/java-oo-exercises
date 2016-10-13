@@ -40,9 +40,11 @@ public class Javagram {
 		} while(picture == null);
 		
 		// TODO - prompt user for filter and validate input
-		
-		// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
-		BlueFilter filter = getFilter();			
+		System.out.println("Enter filter number: 1-Blue, 2-Invert, 3-Brighten, "
+				+ "4-Blur, 5-Monochrome, 6-Grayscale, 7-FlipVert, 8-FlipHoriz, 9-B&W, 0-Sepia");
+		int filter_num = in.nextInt(); 
+		// validate filter_num
+		Filter filter = getFilter(filter_num);			
 
 		// filter and display image
 		Picture processed = filter.process(picture);
@@ -69,13 +71,21 @@ public class Javagram {
 		in.close();
 	}
 	
-	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
-	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
-	private static BlueFilter getFilter() {
-		
-		// TODO - create some more filters, and add logic to return the appropriate one
-		return new BlueFilter();
-		
+	// TODO - refactor this method to throw an exception if the int doesn't correspond to a filter
+	private static Filter getFilter(int filter_num) {
+		switch(filter_num) {
+		case 1: return new BlueFilter();
+		case 2: return new Invert();
+		case 3: return new Brighten();
+		case 4: return new Blur();
+		case 5: return new Monochrome();
+		case 6: return new Grayscale();
+		case 7: return new FlipVert();
+		case 8: return new FlipHoriz();
+		case 9: return new B_WFilter();
+		case 0: return new SepiaFilter();
+		default: throw new ParseException("Unavailable Filter number " + filter_num, 0);
+		}
 	}
 
 }

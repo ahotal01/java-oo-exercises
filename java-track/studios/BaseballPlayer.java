@@ -20,7 +20,9 @@ public class BaseballPlayer {
 	}
 	
 	public void add_game(int runs, int rbis) {
-		
+		this.total_runs += runs;
+		this.total_rbis += rbis;
+		this.total_games++;
 	}
 	
 	public String toString() {

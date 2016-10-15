@@ -39,11 +39,11 @@ public class Javagram {
 			
 		} while(picture == null);
 		
-		// TODO - prompt user for filter and validate input
 		System.out.println("Enter filter number: 1-Blue, 2-Invert, 3-Brighten, "
 				+ "4-Blur, 5-Monochrome, 6-Grayscale, 7-FlipVert, 8-FlipHoriz, 9-B&W, 0-Sepia");
 		int filter_num = in.nextInt(); 
-		// validate filter_num
+		
+		// TODO validate filter_num
 		Filter filter = getFilter(filter_num);			
 
 		// filter and display image

@@ -21,8 +21,10 @@ public class BlueFilter implements Filter{
 	          int g = c.getGreen();
 	          int b = c.getBlue();
 	          
+	          //find average intensity of RGB values
 	          int newBlue = (r + g + b) / 3;
 	          
+	          //set new pixel in same location with average intensity as shade of blue
 	          processed.set(i, j, new Color(0, 0, newBlue));
 	    	  
 	      }

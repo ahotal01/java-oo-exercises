@@ -21,8 +21,10 @@ public class Grayscale implements Filter {
 	          int g = c.getGreen();
 	          int b = c.getBlue();
 	          
+	          //get average intensity of RGB values
 	          int grayVal = (r + g + b) / 3;
 	          
+	          //set new pixel in same location with average intensity as all color values
 	          processed.set(i, j, new Color(grayVal, grayVal, grayVal));
 	    	  
 	      }

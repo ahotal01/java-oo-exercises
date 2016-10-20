@@ -19,7 +19,31 @@ public class BaseballPlayer {
 		this.total_games = 0;
 	}
 	
-	public void add_game(int runs, int rbis) {
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getNumber() {
+		return this.number;
+	}
+	
+	public String getBatting() {
+		return this.batting_type;
+	}
+	
+	public int getRuns() {
+		return this.total_runs;
+	}
+	
+	public int getRBIs() {
+		return this.total_rbis;
+	}
+	
+	public int getGames() {
+		return this.total_games;
+	}
+	
+	public void addGame(int runs, int rbis) {
 		this.total_runs += runs;
 		this.total_rbis += rbis;
 		this.total_games++;
@@ -29,11 +53,6 @@ public class BaseballPlayer {
 		return this.name + ", number " + this.number + ", who bats " + this.batting_type + ", has " 
 				+ this.total_runs + " runs and " + this.total_rbis + " RBIs over the course of " 
 				+ this.total_games + " games.";
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

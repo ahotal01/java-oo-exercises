@@ -4,6 +4,7 @@ import javagram.filters.*;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Javagram {
@@ -39,12 +40,18 @@ public class Javagram {
 			
 		} while(picture == null);
 		
-		System.out.println("Enter filter number: 1-Blue, 2-Invert, 3-Brighten, "
-				+ "4-Blur, 5-Monochrome, 6-Grayscale, 7-FlipVert, 8-FlipHoriz, 9-B&W, 0-Sepia");
-		int filter_num = in.nextInt(); 
-		
-		// TODO validate filter_num
-		Filter filter = getFilter(filter_num);			
+		Filter filter = null;
+		do {
+			System.out.println("Enter filter number: 1-Blue, 2-Invert, 3-Brighten, "
+					+ "4-Blur, 5-Monochrome, 6-Grayscale, 7-FlipVert, 8-FlipHoriz, 9-B&W, 0-Sepia");
+			int filter_num = in.nextInt();
+			
+			try {
+				filter = getFilter(filter_num);
+			} catch (InputMismatchException e) {
+				System.out.println(e);
+			}
+		} while (filter == null);
 
 		// filter and display image
 		Picture processed = filter.process(picture);
@@ -57,10 +64,17 @@ public class Javagram {
 		System.out.println("Save image to (relative to " + dir + ") (type 'exit' to quit w/o saving):");
 		String fileName = in.next();
 		
-		// TODO - if the user enters the same file name as the input file, confirm that they want to overwrite the original
-		
 		if (fileName.equals("exit")) {
 			System.out.println("Image not saved");
+		} else if (fileName.equals(dir)){
+			System.out.println("Are you sure you want to overwrite the original? (Type y/n)");
+			if (in.next() == "y") {
+				String absFileName = dir + File.separator + fileName;
+				processed.save(absFileName);
+				System.out.println("Image saved to " + absFileName);
+			} else {
+				System.out.println("Image not saved");
+			}
 		} else {
 			String absFileName = dir + File.separator + fileName;
 			processed.save(absFileName);
@@ -71,8 +85,7 @@ public class Javagram {
 		in.close();
 	}
 	
-	// TODO - refactor this method to throw an exception if the int doesn't correspond to a filter
-	private static Filter getFilter(int filter_num) {
+	private static Filter getFilter(int filter_num) throws InputMismatchException {
 		switch(filter_num) {
 		case 1: return new BlueFilter();
 		case 2: return new Invert();
@@ -84,7 +97,7 @@ public class Javagram {
 		case 8: return new FlipHoriz();
 		case 9: return new B_WFilter();
 		case 0: return new SepiaFilter();
-		default: throw new ParseException("Unavailable Filter number " + filter_num, 0);
+		default: throw new InputMismatchException("Invalid Filter number. ");
 		}
 	}
 

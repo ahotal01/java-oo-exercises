@@ -4,14 +4,30 @@ public class Rectangle {
 	private int length;
 	private int width;
 	
-	public int get_length()
+	public Rectangle(int length, int width)
+	{
+		this.length = length;
+		this.width = width;
+	}
+	
+	public int getLength()
 	{
 		return this.length;
 	}
 	
-	public int get_width()
+	public void setLength(int length)
+	{
+		this.length = length;
+	}
+	
+	public int getWidth()
 	{
 		return this.width;
+	}
+	
+	public void setWidth(int width)
+	{
+		this.width = width;
 	}
 	
 	public int perimeter()
@@ -24,7 +40,7 @@ public class Rectangle {
 		return this.length * this.width;
 	}
 	
-	public boolean is_smaller(Rectangle r_2)
+	public boolean isSmaller(Rectangle r_2)
 	{
 		if (this.area() < r_2.area())
 		{
@@ -33,17 +49,13 @@ public class Rectangle {
 		else return false;
 	}
 	
-	public boolean is_square()
+	public boolean isSquare()
 	{
 		if (this.length == this.width)
 		{
 			return true;
 		}
 		else return false;
-	}
-	
-	public static void main(String[] args) {
-		// TODO Unit tests go here
 	}
 
 }

@@ -8,7 +8,7 @@ public class Blur implements Filter {
 
 	@Override
 	public Picture process(Picture original) {
-Picture processed = new Picture(original.width(), original.height());
+		Picture processed = new Picture(original.width(), original.height());
         
 	    //get each pixel one by one
 	    for (int i = 0; i < original.width(); i++) {

@@ -11,6 +11,14 @@ public class Fraction {
 		this.denominator = denom;
 	}
 	
+	public int getNum() {
+		return this.numerator;
+	}
+	
+	public int getDen() {
+		return this.denominator;
+	}
+	
 	public Fraction add(Fraction f) {
 		int new_num = this.numerator * f.denominator + f.numerator * this.denominator;
 		int new_den = this.denominator * f.denominator;
@@ -20,12 +28,12 @@ public class Fraction {
 	
 	public Fraction multiply(Fraction f) {
 		Fraction product = new Fraction(this.numerator * f.numerator, this.denominator * f.denominator);
-		return product;
+		return product.simplify();
 	}
 	
 	public Fraction reciprocal() {
 		Fraction recip = new Fraction(this.denominator, this.numerator);
-		return recip;
+		return recip.simplify();
 	}
 	
 	public Fraction simplify() {
@@ -46,10 +54,6 @@ public class Fraction {
 			}
 		}
 		return 1;
-	}
-	
-	public static void main(String[] args) {
-		// TODO Unit tests here
 	}
 
 }
